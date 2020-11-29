@@ -1,7 +1,6 @@
 package org.example.Model;
 import java.util.*;
 
-
 public class PokerHand {
 
     private List<PokerCard> cards=new ArrayList<PokerCard>(5);
@@ -30,5 +29,4 @@ public class PokerHand {
     public int count(){
         return cards.size();
     }
-
 }

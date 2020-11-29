@@ -1,12 +1,8 @@
 package org.example;
 
-import org.example.Model.King;
-import org.junit.Test;
 import org.example.Model.PokerCard;
 import org.example.Model.Suite;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -20,11 +16,11 @@ public class PokerCardTest {
         assertTrue( one.equals(two));
     }
     @Test
-    public void compareDifferentCardsShouldBEFalse() {
+    public void compareDifferentCardsShouldBeFalse() {
         System.out.println("compare 1heart with 1diamond");
         PokerCard one= new PokerCard(Suite.HEART, 1);
         PokerCard two= new PokerCard(Suite.DIAMOND, 1);
-        assertTrue( one.equals(two));
+        assertFalse( one.equals(two));
     }
     @Test
     public void compareCardsShouldBEFalse() {
@@ -40,17 +36,5 @@ public class PokerCardTest {
         PokerCard two= new PokerCard(Suite.DIAMOND, 2);
         assertTrue( one.compareTo(two) == -1);
 
-    }
-    @Test
-    public void SortCards(){
-        ArrayList<PokerCard> list = new ArrayList<PokerCard>(4);
-        PokerCard king= new King(Suite.HEART);
-        PokerCard two= new PokerCard(Suite.DIAMOND, 2);
-        PokerCard ten = new PokerCard(Suite.SPADE, 10);
-        PokerCard three = new PokerCard(Suite.CLUB, 3);
-        list.add(king);
-        list.add(two);
-        list.add(ten);
-        list.add(three);
     }
 }

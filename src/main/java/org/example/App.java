@@ -2,8 +2,8 @@ package org.example;
 
 import org.example.Model.PokerCard;
 import org.example.Model.PokerHand;
-import org.example.service.PokerCardFactory;
-import org.example.service.PokerRules;
+import org.example.Service.PokerCardFactory;
+import org.example.Service.PokerRules;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,13 +21,10 @@ public class App
             System.out.println("to exit enter CTRL + C");
             System.out.println("please enter list of poker cards in the form: JS,10S,9S,8S,7S");
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            String line =  reader.readLine();
-            // read input from console
-            // String input = "AS,10C,10H,3D,3S";
-            // String input = "10S,10C,10H,10D,J";
-            // String input = "10S,9S,8S,7S,6S";
-            String input = "JS,10S,9S,8S,7S";
-            String result = calculatePokerHand(input);
+            String input = reader.readLine();
+            //String input = "JS,10S,9S,8S,7S";
+            // TODO: validate and error checking for input
+            String result = calculatePokerHand(input.trim());
             System.out.println(result);
         }
     }
