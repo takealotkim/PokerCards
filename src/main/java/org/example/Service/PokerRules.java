@@ -1,11 +1,16 @@
-package org.example.Service;
+package org.example.service;
 
+import org.example.Model.Joker;
 import org.example.Model.PokerCard;
 import org.example.Model.PokerHand;
+import org.example.Model.Suite;
+
+import java.util.List;
 
 public class PokerRules {
 
     public static String rankHand(PokerHand hand){
+        hand.sort();
         //0. Five of a kind*
         if(isFiveOfaKind(hand))
             return "Five Of a Kind";
@@ -39,11 +44,32 @@ public class PokerRules {
 
     //0. Five of a kind*
     public static boolean isFiveOfaKind(PokerHand hand){
+        List<PokerCard> list= hand.getCards();
+        if(list.contains(new Joker())) {
+            PokerCard temp = list.get(0);
+            for (PokerCard card : list) {
+                System.out.println("FOUND " + card.getSuite() + card.toString());
+                if((card.compareTo(temp)!=0) && !card.equals(new Joker())){
+                    return false;
+                }
+                return true;
+            }
+        }
         return false;
     }
     //1. Straight flush*
     public static boolean isStraightFlush(PokerHand hand){
-        return false;
+        List<PokerCard> list= hand.getCards();
+        if(list.size()<5)
+            return false;
+        // check cards are all the same suite:
+        for(int i=1;i<5;i++){
+            if(list.get(i).getSuite()!=list.get(i-1).getSuite())
+                return false;
+            if(list.get(i).getValue()!=list.get(i-1).getValue()+1)
+                return false;
+        }
+        return true;
     }
     //2. Four of a kind
     public static boolean isFourOfAKind(PokerHand hand){

@@ -1,12 +1,17 @@
-package org.example.Service;
+package org.example.service;
 
 import org.example.Model.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class PokerCardFactory {
     private static Map<Character, Suite> map = new HashMap<Character, Suite>();
     static {
+        map.put('D', Suite.DIAMOND);
+        map.put('H', Suite.HEART);
+        map.put('S', Suite.SPADE);
+        map.put('C', Suite.CLUB);
         map.put('d', Suite.DIAMOND);
         map.put('h', Suite.HEART);
         map.put('s', Suite.SPADE);
@@ -14,6 +19,7 @@ public class PokerCardFactory {
     }
 
     public static PokerCard getPokerCard(String name){
+
 
         if(name == null)
             return null;
@@ -25,7 +31,7 @@ public class PokerCardFactory {
             return null;
         }
         char ch = name.charAt(name.length()-1);
-        Suite suite = map.get(ch);
+        Suite suite = map.get(new Character(ch));
         System.out.println("ch is: " + ch);
         String value = name.substring(0,name.length()-1);
         System.out.println("value is: " + value);
@@ -55,5 +61,5 @@ public class PokerCardFactory {
         }
         return null;
     }
-}
 
+}

@@ -31,4 +31,9 @@ public class PokerCard implements Comparable<PokerCard> {
         }
         return ((this.value == ((PokerCard) o).value) && (this.suite == ((PokerCard) o).suite));
     }
+
+    @Override
+    public String toString(){
+        return this.value + this.suite.toString();
+    }
 }
