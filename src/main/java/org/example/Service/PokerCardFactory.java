@@ -33,7 +33,7 @@ public class PokerCardFactory {
         Suite suite = map.get(new Character(ch));
         String value = name.substring(0,name.length()-1);
         if(value.equalsIgnoreCase("a")) {
-            return new Ace(suite);
+            return new PokerCard(suite, 13);//new Ace(suite);
         }
         if(value.equalsIgnoreCase("k")) {
             return new King(suite);

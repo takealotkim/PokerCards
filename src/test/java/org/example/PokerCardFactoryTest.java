@@ -17,7 +17,7 @@ public class PokerCardFactoryTest {
     public void shouldCreateAnAce(){
         System.out.println("create a card with input AH");
         PokerCard result = PokerCardFactory.getPokerCard("AH");
-        assertTrue( result instanceof Ace);
+        assertTrue( result.getValue()==13 );
     }
     @Test
     public void shouldCreateAQueen(){
